@@ -1,6 +1,3 @@
-import { toast } from './toast';
-export * from './types';
+export { toast } from './toast';
+export type { DefaultOptions, Toast, ToastType } from './types';
 export { Toaster } from './components/Toaster';
-
-export { toast };
-export default toast;
