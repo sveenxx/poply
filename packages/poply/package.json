@@ -2,7 +2,7 @@
   "name": "poply",
   "description": "Poply is lightweight toast library for React",
   "repository": "sveenxx/poply",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
