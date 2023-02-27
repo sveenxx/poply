@@ -1,5 +1,5 @@
 {
-  "name": "poply",
+  "name": "root",
   "version": "0.0.0",
   "private": true,
   "workspaces": [
@@ -13,13 +13,13 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "eslint-config-custom": "workspace:*",
+    "@poply/eslint-config-poply": "workspace:*",
     "prettier": "latest",
+    "prettier-plugin-tailwindcss": "^0.2.3",
     "turbo": "latest"
   },
   "engines": {
     "node": ">=14.0.0"
   },
-  "dependencies": {},
   "packageManager": "pnpm@7.17.0"
 }
