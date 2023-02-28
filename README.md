@@ -29,7 +29,7 @@ yarn add poply
 
 ## Usage
 
-Add <Toaster /> to your app component:
+Add `<Toaster />` to your app component:
 ```tsx
     import { Toaster, toast } from 'poply';
 
