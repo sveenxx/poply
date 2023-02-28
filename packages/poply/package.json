@@ -49,5 +49,8 @@
       "path": "dist/poply.mjs",
       "limit": "5 KB"
     }
-  ]
+  ],
+  "dependencies": {
+    "goober": "^2.1.12"
+  }
 }

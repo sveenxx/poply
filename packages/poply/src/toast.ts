@@ -2,7 +2,7 @@ import { DefaultOptions, Toast, ToastType } from './types';
 import { getRandomId } from './utils/get-random-id';
 
 const DEFAULT_OPTIONS = {
-  position: 'top-right',
+  position: 'bottom-center',
   duration: 3000,
 } as DefaultOptions;
 
@@ -56,6 +56,7 @@ export const toastStore = Object.freeze({
     }
 
     const duration = options.duration || DEFAULT_OPTIONS.duration;
+    const position = options.position || DEFAULT_OPTIONS.position;
     const id = getRandomId();
 
     toasts = [
@@ -65,6 +66,7 @@ export const toastStore = Object.freeze({
         message,
         duration,
         type,
+        position,
         timeout: setTimeout(() => {
           this.delete(id);
         }, duration),
@@ -76,14 +78,14 @@ export const toastStore = Object.freeze({
 });
 
 export const toast = Object.freeze({
-  error: (message: string, options?: DefaultOptions) =>
+  error: (message: string, options?: Partial<DefaultOptions>) =>
     toastStore.add({ message, type: 'error', ...options }),
-  success: (message: string, options?: DefaultOptions) =>
+  success: (message: string, options?: Partial<DefaultOptions>) =>
     toastStore.add({ message, type: 'success', ...options }),
-  warning: (message: string, options?: DefaultOptions) =>
+  warning: (message: string, options?: Partial<DefaultOptions>) =>
     toastStore.add({ message, type: 'warning', ...options }),
-  info: (message: string, options?: DefaultOptions) =>
+  info: (message: string, options?: Partial<DefaultOptions>) =>
     toastStore.add({ message, type: 'info', ...options }),
-  promise: (message: string, options?: DefaultOptions) =>
+  promise: (message: string, options?: Partial<DefaultOptions>) =>
     toastStore.add({ message, type: 'promise', ...options }),
 });

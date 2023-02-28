@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f0c2c835-ee93-44a7-afa7-15a02aac9ccc" name="Changes" comment="feat: add changeset">
+      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/poply/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/poply/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/poply/src/components/Toast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/poply/src/components/Toast.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/poply/src/components/Toaster.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/poply/src/components/Toaster.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/poply/src/toast.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/poply/src/toast.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/poply/src/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/poply/src/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="xpexszg4" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2MKWCjYXnjIUGAvmeFySEKBVk8c" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/MyProjects/CapybaraLab/poply",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "prettierjs.PrettierConfiguration.Package": "C:\\MyProjects\\CapybaraLab\\poply\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "C:\\MyProjects\\CapybaraLab\\poply\\packages\\poply\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\MyProjects\CapybaraLab\poply\packages\poply\src\styles" />
+      <recent name="C:\MyProjects\CapybaraLab\poply\packages\poply\src\components" />
+      <recent name="C:\MyProjects\CapybaraLab\poply\packages\config\tailwind" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f0c2c835-ee93-44a7-afa7-15a02aac9ccc" name="Changes" comment="" />
+      <created>1677516628517</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1677516628517</updated>
+      <workItem from="1677516629617" duration="9522000" />
+      <workItem from="1677526600851" duration="16118000" />
+      <workItem from="1677584031526" duration="1115000" />
+      <workItem from="1677585179227" duration="4073000" />
+    </task>
+    <task id="LOCAL-00001" summary="fix: fix exports">
+      <created>1677539267551</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1677539267551</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat: add changeset">
+      <created>1677540458385</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1677540458385</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix: fix exports" />
+    <MESSAGE value="feat: add changeset" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add changeset" />
+  </component>
+</project>

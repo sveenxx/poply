@@ -14,7 +14,16 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <div className={styles.container}>
           <h1 className={styles.title}>Poply</h1>
-          <button onClick={() => toast.success('siemka!')}>Show</button>
+          <button
+            onClick={() =>
+              toast.success(Math.random().toString(5).substring(10), {
+                duration: 5000,
+                position: 'bottom-center',
+              })
+            }
+          >
+            Show
+          </button>
           <div className={styles.cardRow}></div>
         </div>
       </main>
