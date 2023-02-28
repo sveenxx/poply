@@ -1,5 +1,5 @@
 <p align="center">
-  <img height=400 src="https://i.imgur.com/MwiRRJB.png" />
+  <img height=300 src="https://i.imgur.com/MwiRRJB.png" />
 </p>
 <p align="center">
   <img src="https://img.shields.io/npm/v/poply.svg?style=for-the-badge"/>
