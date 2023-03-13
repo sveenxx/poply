@@ -16,8 +16,8 @@ const Home: NextPage = () => {
           <h1 className={styles.title}>Poply</h1>
           <button
             onClick={() =>
-              toast.success(Math.random().toString(5).substring(10), {
-                duration: 5000,
+              toast.warning('Gratulacje! Udało ci się poprawnie zalogować', {
+                duration: 40000,
                 position: 'bottom-center',
               })
             }
@@ -27,7 +27,7 @@ const Home: NextPage = () => {
           <div className={styles.cardRow}></div>
         </div>
       </main>
-      <Toaster />
+      <Toaster bgColor="#000" textColor="#fff" />
     </>
   );
 };
