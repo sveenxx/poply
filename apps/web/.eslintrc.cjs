@@ -7,7 +7,7 @@ module.exports = {
       ],
       files: ["*.ts", "*.tsx"],
       parserOptions: {
-        project: "tsconfig.json",
+        project: "./apps/web/tsconfig.json",
       },
     },
   ],
