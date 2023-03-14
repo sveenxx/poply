@@ -1,5 +1,17 @@
 # poply
 
+## 3.1.2
+
+### Patch Changes
+
+- fix icon color
+
+## 3.1.1
+
+### Patch Changes
+
+- fix cancel button color
+
 ## 3.1.0
 
 ### Minor Changes

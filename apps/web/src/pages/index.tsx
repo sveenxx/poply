@@ -14,16 +14,8 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <div className={styles.container}>
           <h1 className={styles.title}>Poply</h1>
-          <button
-            onClick={() =>
-              toast.warning('Gratulacje! Udało ci się poprawnie zalogować', {
-                duration: 40000,
-                position: 'bottom-center',
-              })
-            }
-          >
-            Show
-          </button>
+          {/* eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-return */}
+          <button onClick={() => toast.warning('This is a warning toast')}>Show</button>
           <div className={styles.cardRow}></div>
         </div>
       </main>

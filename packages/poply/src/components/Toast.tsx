@@ -143,7 +143,7 @@ export const Toast = ({
           <StyledToastMessage textColor={textColor}>{message}</StyledToastMessage>
         </StyledToastContent>
         <StyledToastButton onClick={onClick}>
-          <Close />
+          <Close textColor={textColor} />
         </StyledToastButton>
       </StyledToast>
     </StyledToastWrapper>
