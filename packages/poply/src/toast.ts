@@ -60,7 +60,7 @@ export const toastStore = Object.freeze({
       return;
     }
 
-    this.update(id, { visible: false });
+    this.update(id, { isVisible: false });
     clearTimeout(toast.timeout);
 
     const timeout = setTimeout(() => {
@@ -96,7 +96,7 @@ export const toastStore = Object.freeze({
         duration,
         type,
         position,
-        visible: true,
+        isVisible: true,
         timeout: setTimeout(() => {
           this.delete(id);
         }, duration),

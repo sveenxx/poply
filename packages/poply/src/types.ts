@@ -20,6 +20,6 @@ export type Toast = {
   duration: number;
   position: ToastPosition;
   timeout: ReturnType<typeof setTimeout>;
-  visible: boolean;
+  isVisible: boolean;
   destroy: () => void;
 };

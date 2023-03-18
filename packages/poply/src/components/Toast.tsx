@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { ToastPosition, ToastType } from '../types';
 import { styled, keyframes } from 'goober';
-import { Close, Error, Info, Success, Warning } from './Icons.js';
+import { Close, Error, Info, Success, Warning } from './Icons';
 
 const TOAST_HEIGHT = 4;
 const TOAST_WIDTH = 20;
@@ -49,7 +49,14 @@ const StyledToastWrapper = styled('div')<{ position: ToastPosition }>`
   z-index: 9999;
 `;
 
-const StyledToast = styled('div')<{ isVisible: boolean; bgColor?: string }>`
+const StyledToastAnimation = styled('div', React.forwardRef)<{ isVisible: boolean }>`
+  ${({ isVisible }) =>
+    isVisible
+      ? `animation: ${fadeIn} 0.2s ease-in-out`
+      : `animation: ${fadeOut} 0.2s ease-in-out; opacity: 0;`};
+`;
+
+const StyledToast = styled('div')<{ bgColor?: string }>`
   background: ${({ bgColor }) => (bgColor ? bgColor : '#fff')};
   border-radius: 0.5rem;
   display: flex;
@@ -57,10 +64,6 @@ const StyledToast = styled('div')<{ isVisible: boolean; bgColor?: string }>`
   width: ${TOAST_WIDTH}rem;
   justify-content: space-between;
   align-items: center;
-  ${({ isVisible }) =>
-    isVisible
-      ? `animation: ${fadeIn} 0.2s ease-in-out`
-      : `animation: ${fadeOut} 0.2s ease-in-out; opacity: 0;`};
   padding: 1rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease-in-out;
@@ -72,12 +75,11 @@ const StyledToastMessage = styled('span')<{ textColor?: string }>`
   font-weight: 500;
 `;
 
-type ToastProps = {
+export type ToastProps = {
   message: string;
-  onClick: () => void;
+  remove: () => void;
   isVisible: boolean;
-  toastsCount: number;
-  toastIndex: number;
+  toastIndex?: number;
   type: ToastType;
   bgColor?: string;
   textColor?: string;
@@ -97,9 +99,24 @@ const StyledToastButton = styled('button')`
   cursor: pointer;
 `;
 
+export const PoplyIcon = ({ type }: { type: ToastType }) => {
+  switch (type) {
+    case 'success':
+      return <Success />;
+    case 'error':
+      return <Error />;
+    case 'warning':
+      return <Warning />;
+    case 'info':
+      return <Info />;
+    default:
+      return <Success />;
+  }
+};
+
 export const Toast = ({
   message,
-  onClick,
+  remove,
   type,
   position,
   isVisible,
@@ -107,45 +124,52 @@ export const Toast = ({
   bgColor,
   textColor,
 }: ToastProps) => {
-  function getIconByType(type: ToastType) {
-    switch (type) {
-      case 'success':
-        return <Success />;
-      case 'error':
-        return <Error />;
-      case 'warning':
-        return <Warning />;
-      case 'info':
-        return <Info />;
-      default:
-        return <Success />;
-    }
-  }
+  return (
+    <ToastWrapper position={position} toastIndex={toastIndex!} isVisible={isVisible}>
+      <StyledToast bgColor={bgColor}>
+        <StyledToastContent>
+          <PoplyIcon type={type} />
+          <StyledToastMessage textColor={textColor}>{message}</StyledToastMessage>
+        </StyledToastContent>
+        <StyledToastButton onClick={remove}>
+          <Close textColor={textColor} />
+        </StyledToastButton>
+      </StyledToast>
+    </ToastWrapper>
+  );
+};
+
+export const ToastWrapper = ({
+  children,
+  position,
+  toastIndex,
+  isVisible,
+}: {
+  children: React.ReactNode;
+  position: ToastPosition;
+  isVisible: boolean;
+  toastIndex: number;
+}) => {
+  const [height, setHeight] = React.useState(0);
 
   return (
     <StyledToastWrapper
       position={position}
       style={{
         transform: position.startsWith('top')
-          ? `translateY(${(TOAST_HEIGHT + 0.5) * toastIndex}rem)`
-          : `translateY(-${(TOAST_HEIGHT + 0.5) * toastIndex}rem)`,
+          ? `translateY(${(height + 8) * toastIndex}px)`
+          : `translateY(-${(height + 8) * toastIndex}px)`,
       }}
     >
-      <StyledToast
-        bgColor={bgColor}
+      <StyledToastAnimation
         isVisible={isVisible}
         style={{
           pointerEvents: 'auto',
         }}
+        ref={(node) => setHeight(node?.clientHeight ?? 0)}
       >
-        <StyledToastContent>
-          {getIconByType(type)}
-          <StyledToastMessage textColor={textColor}>{message}</StyledToastMessage>
-        </StyledToastContent>
-        <StyledToastButton onClick={onClick}>
-          <Close textColor={textColor} />
-        </StyledToastButton>
-      </StyledToast>
+        {children}
+      </StyledToastAnimation>
     </StyledToastWrapper>
   );
 };

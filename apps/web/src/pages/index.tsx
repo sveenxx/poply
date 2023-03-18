@@ -1,7 +1,7 @@
 import styles from './index.module.css';
 import { type NextPage } from 'next';
 import Head from 'next/head';
-import { toast, Toaster } from 'poply';
+import { toast, Toaster, PoplyIcon, type ToastType } from 'poply';
 
 const Home: NextPage = () => {
   return (
@@ -15,11 +15,35 @@ const Home: NextPage = () => {
         <div className={styles.container}>
           <h1 className={styles.title}>Poply</h1>
           {/* eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-return */}
-          <button onClick={() => toast.warning('This is a warning toast')}>Show</button>
+          <button
+            onClick={() =>
+              toast.warning('This is a warning toast', {
+                duration: 200000,
+              })
+            }
+          >
+            Show
+          </button>
           <div className={styles.cardRow}></div>
         </div>
       </main>
-      <Toaster bgColor="#000" textColor="#fff" />
+      <Toaster
+        bgColor="#000"
+        textColor="#fff"
+        // maxToasts={3}
+        // maxToastsPerMessage={2}
+        customComponent={({ remove, message, type }) => (
+          <div className="flex h-14 items-center bg-black p-4">
+            <div className="flex items-center gap-4">
+              <PoplyIcon type={type as ToastType} />
+              <span className="text-white">{message}</span>
+            </div>
+            <button onClick={remove as () => void} className="text-white">
+              X
+            </button>
+          </div>
+        )}
+      />
     </>
   );
 };

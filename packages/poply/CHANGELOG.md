@@ -1,5 +1,11 @@
 # poply
 
+## 3.1.3
+
+### Patch Changes
+
+- Add custom component
+
 ## 3.1.2
 
 ### Patch Changes
