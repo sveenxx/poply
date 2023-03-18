@@ -87,7 +87,7 @@ Toaster component accepts following props:
 | customComponent | Custom component to render toast |
 | position | Position of toast container      |
 
-#### Custom component example: 
+#### Custom component example:
 ```tsx
 import { Toaster, toast } from 'poply';
 import { CustomToast } from './components/custom-toast';

@@ -1,5 +1,12 @@
 # web
 
+## 0.1.8
+
+### Patch Changes
+
+- Updated dependencies
+  - poply@3.1.5
+
 ## 0.1.7
 
 ### Patch Changes

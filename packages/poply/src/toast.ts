@@ -1,11 +1,6 @@
-import { DefaultOptions, Toast, ToastType } from './types';
+import { DefaultOptions, Toast, ToastPosition, ToastType } from './types';
 import { getRandomId } from './utils/get-random-id';
-
-const DEFAULT_OPTIONS = {
-  position: 'bottom-center',
-  duration: 3000,
-} as DefaultOptions;
-const TOAST_CLOSE_DELAY = 300;
+import { DEFAULT_DURATION, TOAST_CLOSE_DELAY } from './constants';
 
 const observers = new Set<{
   (): void;
@@ -85,8 +80,8 @@ export const toastStore = Object.freeze({
     //   return;
     // }
 
-    const duration = options.duration || DEFAULT_OPTIONS.duration;
-    const position = options.position || DEFAULT_OPTIONS.position;
+    const duration = options.duration || DEFAULT_DURATION;
+    const position = options.position;
     const id = getRandomId();
 
     toasts = [

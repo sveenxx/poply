@@ -30,6 +30,7 @@ const Home: NextPage = () => {
       <Toaster
         bgColor="#000"
         textColor="#fff"
+        position={'top-right'}
         // maxToasts={3}
         // maxToastsPerMessage={2}
         customComponent={({ remove, message, type }) => (

@@ -1,5 +1,5 @@
 export type DefaultOptions = {
-  position: ToastPosition;
+  position: ToastPosition | undefined;
   duration: number;
 };
 
@@ -18,7 +18,7 @@ export type Toast = {
   message: string;
   type: ToastType;
   duration: number;
-  position: ToastPosition;
+  position: ToastPosition | undefined;
   timeout: ReturnType<typeof setTimeout>;
   isVisible: boolean;
   destroy: () => void;
