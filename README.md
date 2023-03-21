@@ -86,6 +86,8 @@ Toaster component accepts following props:
 | textColor   | Color of text and close icon     |
 | customComponent | Custom component to render toast |
 | position | Position of toast container      |
+| maxToasts | Maximum number of toasts to show |
+| maxToastsPerMessage | Maximum number of toasts per message |
 
 #### Custom component example: 
 ```tsx
