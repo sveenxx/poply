@@ -1,6 +1,7 @@
 import { DefaultOptions, Toast, ToastPosition, ToastType } from './types';
 import { getRandomId } from './utils/get-random-id';
-import { DEFAULT_DURATION, TOAST_CLOSE_DELAY } from './constants';
+import { TOAST_CLOSE_DELAY } from './constants';
+import { config } from './config';
 
 const observers = new Set<{
   (): void;
@@ -58,13 +59,16 @@ export const toastStore = Object.freeze({
     this.update(id, { isVisible: false });
     clearTimeout(toast.timeout);
 
-    const timeout = setTimeout(() => {
-      toasts = toasts.filter((toast) => toast.id !== id);
-      clearTimeout(timeouts.get(id));
-      this.refresh();
-    }, TOAST_CLOSE_DELAY);
-
-    timeouts.set(id, timeout);
+    timeouts.set(
+      id,
+      setTimeout(() => {
+        console.log(timeouts);
+        toasts = toasts.filter((toast) => toast.id !== id);
+        clearTimeout(timeouts.get(id));
+        timeouts.delete(id);
+        this.refresh();
+      }, TOAST_CLOSE_DELAY),
+    );
   },
 
   add({
@@ -80,8 +84,8 @@ export const toastStore = Object.freeze({
     //   return;
     // }
 
-    const duration = options.duration || DEFAULT_DURATION;
-    const position = options.position;
+    const duration = options.duration || config.value.duration;
+    const position = options.position || config.value.position;
     const id = getRandomId();
 
     toasts = [
@@ -99,6 +103,21 @@ export const toastStore = Object.freeze({
       },
       ...toasts,
     ];
+
+    if (config.value.maxToasts && toasts.length > config.value.maxToasts) {
+      const filteredToasts = toasts.filter((toast) => !timeouts.has(toast.id!));
+      this.delete(filteredToasts.at(-1)!.id!);
+    }
+
+    if (config.value.maxToastsPerMessage) {
+      const filteredToasts = toasts.filter(
+        (toast) => toast.message === message && !timeouts.has(toast.id!),
+      );
+      if (filteredToasts.length > config.value.maxToastsPerMessage) {
+        this.delete(filteredToasts.at(-1)!.id!);
+      }
+    }
+
     this.refresh();
   },
 });
