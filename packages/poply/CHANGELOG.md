@@ -1,5 +1,14 @@
 # poply
 
+## 3.2.0
+
+### Minor Changes
+
+- fix issue with badly displayed long text
+  add maxToasts prop to Toaster
+  add maxToastsPerMessage prop to Toaster
+  fix issue with icon size
+
 ## 3.1.5
 
 ### Patch Changes

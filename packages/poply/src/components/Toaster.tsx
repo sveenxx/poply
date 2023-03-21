@@ -3,14 +3,16 @@ import { toastStore } from '../toast';
 import { Toast, ToastProps, ToastWrapper } from './Toast';
 import { setup } from 'goober';
 import { ToastPosition } from '../types';
-import { DEFAULT_POSITION } from '../constants';
+import { config } from '../config';
 
 setup(React.createElement);
 
 type ToasterProps = {
   bgColor?: string;
   textColor?: string;
+  maxToasts?: number;
   position?: ToastPosition;
+  maxToastsPerMessage?: number;
   duration?: number;
   customComponent?: (props: ToastProps) => ReactNode;
 };
@@ -21,12 +23,19 @@ export const Toaster = ({
   customComponent,
   position,
   duration,
+  maxToasts,
+  maxToastsPerMessage,
 }: ToasterProps) => {
   const toasts = useSyncExternalStore(
     toastStore.subscribe,
     toastStore.getSnapShot,
     toastStore.getServerSnapShot,
   );
+
+  position && config.set('position', position);
+  duration && config.set('duration', duration);
+  maxToasts && config.set('maxToasts', maxToasts);
+  maxToastsPerMessage && config.set('maxToastsPerMessage', maxToastsPerMessage);
 
   return (
     <div
@@ -37,22 +46,20 @@ export const Toaster = ({
       }}
     >
       {toasts.map((toast) => {
-        const toastPosition = toast.position || position || DEFAULT_POSITION;
+        const toastIndex = toasts.indexOf(toast);
 
         return customComponent ? (
           <ToastWrapper
-            toastIndex={toasts.indexOf(toast)}
-            position={toastPosition}
+            toastIndex={toastIndex}
+            position={toast.position}
             isVisible={toast.isVisible}
             key={toast.id}
           >
             {customComponent({
               ...toast,
               bgColor,
-              remove: toast.destroy,
               textColor,
-              position: toastPosition,
-              toastIndex: toasts.indexOf(toast),
+              toastIndex: toastIndex,
             })}
           </ToastWrapper>
         ) : (
@@ -60,10 +67,8 @@ export const Toaster = ({
             {...toast}
             bgColor={bgColor}
             textColor={textColor}
-            position={toastPosition}
-            remove={toast.destroy}
             key={toast.id}
-            toastIndex={toasts.indexOf(toast)}
+            toastIndex={toastIndex}
           />
         );
       })}

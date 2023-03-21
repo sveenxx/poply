@@ -18,7 +18,7 @@ export type Toast = {
   message: string;
   type: ToastType;
   duration: number;
-  position: ToastPosition | undefined;
+  position: ToastPosition;
   timeout: ReturnType<typeof setTimeout>;
   isVisible: boolean;
   destroy: () => void;
