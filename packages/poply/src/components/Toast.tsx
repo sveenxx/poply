@@ -73,23 +73,18 @@ const StyledToastMessage = styled('span')<{ textColor?: string }>`
   color: ${({ textColor }) => (textColor ? textColor : '#000')};
   font-size: 0.9rem;
   font-weight: 500;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  width: 100%;
 `;
-
-export type ToastProps = {
-  message: string;
-  remove: () => void;
-  isVisible: boolean;
-  toastIndex?: number;
-  type: ToastType;
-  bgColor?: string;
-  textColor?: string;
-  position: ToastPosition;
-};
 
 const StyledToastContent = styled('div')`
   display: flex;
   align-items: center;
   gap: 1rem;
+  width: 100%;
 `;
 
 const StyledToastButton = styled('button')`
@@ -99,24 +94,44 @@ const StyledToastButton = styled('button')`
   cursor: pointer;
 `;
 
+const StyledIconWrapper = styled('div')`
+  width: 30px;
+  height: 30px;
+`;
+
+export type ToastProps = {
+  message: string;
+  destroy: () => void;
+  isVisible: boolean;
+  toastIndex?: number;
+  type: ToastType;
+  bgColor?: string;
+  textColor?: string;
+  position: ToastPosition;
+};
+
 export const PoplyIcon = ({ type }: { type: ToastType }) => {
-  switch (type) {
-    case 'success':
-      return <Success />;
-    case 'error':
-      return <Error />;
-    case 'warning':
-      return <Warning />;
-    case 'info':
-      return <Info />;
-    default:
-      return <Success />;
+  function getIcon(type: ToastType) {
+    switch (type) {
+      case 'error':
+        return <Error />;
+      case 'info':
+        return <Info />;
+      case 'success':
+        return <Success />;
+      case 'warning':
+        return <Warning />;
+      default:
+        return <Info />;
+    }
   }
+
+  return <StyledIconWrapper>{getIcon(type)}</StyledIconWrapper>;
 };
 
 export const Toast = ({
   message,
-  remove,
+  destroy,
   type,
   position,
   isVisible,
@@ -131,7 +146,7 @@ export const Toast = ({
           <PoplyIcon type={type} />
           <StyledToastMessage textColor={textColor}>{message}</StyledToastMessage>
         </StyledToastContent>
-        <StyledToastButton onClick={remove}>
+        <StyledToastButton onClick={destroy}>
           <Close textColor={textColor} />
         </StyledToastButton>
       </StyledToast>
