@@ -2,7 +2,7 @@
   <img height=300 src="https://i.imgur.com/MwiRRJB.png" />
 </p>
 <p align="center">
-  <img src="https://img.shields.io/npm/v/poply.svg?style=for-the-badge"/>
+  <a href="https://www.npmjs.com/package/poply"><img src="https://img.shields.io/npm/v/poply.svg?style=for-the-badge"/></a>
   <img src="https://img.shields.io/bundlephobia/minzip/poply?style=for-the-badge"/>
   <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg?style=for-the-badge" />
 </p>
