@@ -62,7 +62,6 @@ export const toastStore = Object.freeze({
     timeouts.set(
       id,
       setTimeout(() => {
-        console.log(timeouts);
         toasts = toasts.filter((toast) => toast.id !== id);
         clearTimeout(timeouts.get(id));
         timeouts.delete(id);
@@ -79,10 +78,6 @@ export const toastStore = Object.freeze({
     if (!document.getElementById('poply-toaster')) {
       throw new Error('[poply] Toaster not found. Please add <Toaster /> to your app.');
     }
-
-    // if (toasts.map((toast) => toast.message).includes(message)) {
-    //   return;
-    // }
 
     const duration = options.duration || config.value.duration;
     const position = options.position || config.value.position;
